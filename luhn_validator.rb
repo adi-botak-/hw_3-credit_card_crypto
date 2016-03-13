@@ -6,10 +6,10 @@ module LuhnValidator
 
   # code 1: not elegant, but faster
   def validate_checksum
-    nums_a = number.to_s.chars.map(&:to_i)
+    nums_a = number.to_s.chars.map(&:to_i).reverse!
     sum = 0
     i = 0
-    nums_a.reverse_each do |n|
+    nums_a.each do |n|
       if i.even?
         sum += n
       else
