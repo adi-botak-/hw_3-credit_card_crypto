@@ -4,7 +4,7 @@ module SubstitutionCipher
     # Arguments:
     #   document: String
     #   key: Fixnum (integer)
-    # Returns: String
+    # Returns: String 
     def self.encrypt(document, key)
       # TODO: encrypt string using caesar cipher
       key > 0 ? document.to_s.chars.map { |p| (p.ord + key).chr }.join : caesar_error
