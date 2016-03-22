@@ -15,7 +15,7 @@ describe 'Test card info encryption' do
   end
 
   ciphers.each do |name, cipher|
-    describe 'Using #{name} cipher' do
+    describe "Using #{name} cipher" do
       it 'should encrypt card information' do
         enc = cipher.encrypt(@cc, @key)
         enc.wont_equal @cc.to_s
@@ -29,6 +29,4 @@ describe 'Test card info encryption' do
       end
     end
   end
-  # TODO: Add tests for double transposition and AES ciphers
-  #       Can you DRY out the tests using metaprogramming? (see lecture slide)
 end
