@@ -29,7 +29,7 @@ module SubstitutionCipher
     end
 
     def caesar_error
-      "Key must be positive!"
+      'Key must be positive!'
     end
   end
 
@@ -65,7 +65,7 @@ module SubstitutionCipher
     end
 
     def permutation_error
-      "Key must be positive!"
+      'Key must be positive!'
     end
   end
 end
