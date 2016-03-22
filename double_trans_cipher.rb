@@ -1,5 +1,5 @@
 class Array
-  def unshuffle(random: )
+  def unshuffle(random:)
     transformed_order = (0...length).to_a.shuffle!(random: random)
     sort_by.with_index { |_, i| transformed_order[i] }
   end
@@ -20,18 +20,16 @@ module DoubleTranspositionCipher
     even_size = Math.sqrt(document.length).ceil
     document.prepend(fill_blanks.chr) while (document.length % even_size) != 0
     matrix = document.chars.map.each_slice(even_size).to_a
-    matrix.shuffle!(random:Random.new(key))
+    matrix.shuffle!(random: Random.new(key))
     matrix.map { |m| m.shuffle!(random: Random.new(key)) }.join
   end
 
   def self.decrypt(ciphertext, key)
     # TODO: FILL THIS IN!
-    ciphertext = ciphertext.to_s
     remove_blanks = Random.new(key).rand(127)
     even_size = Math.sqrt(ciphertext.length).ceil
     matrix = ciphertext.chars.map.each_slice(even_size).to_a
     matrix.map! { |m| m.unshuffle(random: Random.new(key)) }
-    matrix.unshuffle(random: Random.new(key))
-    matrix.join.gsub!(remove_blanks.chr, '')
+    matrix.unshuffle(random: Random.new(key)).join.gsub!(remove_blanks.chr, '')
   end
 end
